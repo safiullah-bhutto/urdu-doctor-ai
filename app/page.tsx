@@ -91,7 +91,11 @@ const sendToAssistant = async (text: string) => {
           <span>یہ ایک AI معاون ہے، ڈاکٹر کا متبادل نہیں۔ شدید علامات میں فوری طبی امداد حاصل کریں۔</span>
         </div>
 
-        <QuickPrompts onSelect={sendToAssistant} disabled={loading} />
+       {messages.length === 0 && (
+  <QuickPrompts onSelect={sendToAssistant} disabled={loading} />
+)}
+
+
 
         <ChatWindow
           messages={messages}
