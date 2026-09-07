@@ -23,9 +23,22 @@ export default function ChatWindow({
   const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+ useEffect(() => {
+    const scrollToEnd = () => bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+
+    scrollToEnd();
+    const t1 = setTimeout(scrollToEnd, 120);
+    const t2 = setTimeout(scrollToEnd, 400);
+
+    if (typeof document !== "undefined" && (document as any).fonts?.ready) {
+      (document as any).fonts.ready.then(scrollToEnd);
+    }
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [messages, loading]); 
 
   const handleSend = () => {
     const text = input.trim();
