@@ -48,8 +48,8 @@ export default function ChatWindow({
   };
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden">
-      <div className="chat-scroll flex-1 overflow-y-auto px-4 py-4 space-y-3">
+    <div className="flex flex-1 min-h-0 flex-col overflow-hidden">
+       <div className="chat-scroll flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-3">
         {messages.length === 0 && (
           <div className="mx-auto max-w-sm text-center text-charcoal/50 font-nastaliq text-[17px] mt-10">
             آپ کیسا محسوس کر رہے ہیں؟ نیچے لکھیں، بولیں، یا کوئی سوال منتخب کریں۔
